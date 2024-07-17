@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .challenge {
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #year {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="year">2023</div>
+    <div id="date-time">Date and Time: <span id="current-time"></span></div>
+
+    <div id="completed" class="challenge">Completed Challenge</div>
+    <div id="ongoing" class="challenge">Ongoing Challenge</div>
+    <div id="coming" class="challenge">Coming Challenge</div>
+
+    <script>
+        // Function to change the year color every second
+        const changeYearColor = () => {
+            const yearElement = document.getElementById('year');
+            yearElement.style.color = '#' + Math.floor(Math.random()*16777215).toString(16); // Random color
+        };
+
+        // Function to change date and time background color every second
+        const changeDateTimeBackground = () => {
+            const dateTimeElement = document.getElementById('date-time');
+            dateTimeElement.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Random color
+        };
+
+        // Function to set challenge backgrounds
+        const setChallengeBackgrounds = () => {
+            document.getElementById('completed').style.backgroundColor = 'green';
+            document.getElementById('ongoing').style.backgroundColor = 'yellow';
+            document.getElementById('coming').style.backgroundColor = 'red';
+        };
+
+        // Function to update the current time
+        const updateCurrentTime = () => {
+            const currentTimeElement = document.getElementById('current-time');
+            const now = new Date();
+            currentTimeElement.textContent = now.toLocaleString();
+        };
+
+        // Initialize the application
+        const init = () => {
+            setChallengeBackgrounds();
+            updateCurrentTime(); // Set the initial time
+            setInterval(updateCurrentTime, 1000); // Update time every second
+            setInterval(changeYearColor, 1000); // Change year color every second
+            setInterval(changeDateTimeBackground, 1000); // Change date and time background every second
+        };
+
+        init(); // Start the application
+    </script>
+</body>
+</html>
